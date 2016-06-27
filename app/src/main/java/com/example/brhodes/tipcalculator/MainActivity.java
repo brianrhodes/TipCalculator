@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Double totalBill = billNoTip + tip;
 
         // Display total bill
-      //  totalBillTextView.setText("Total Bill - $" + String.format("%.2f", totalBill));
+       totalBillTextView.setText("Total Bill - $" + String.format("%.2f", totalBill));
 
     }
 }
