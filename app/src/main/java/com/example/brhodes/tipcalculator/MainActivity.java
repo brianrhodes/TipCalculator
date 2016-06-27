@@ -10,9 +10,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     EditText billNoTipTotalEditText;
-    Button tenPercentButton;
-    Button fifteenPercentButton;
-    Button twentyPercentButton;
+    EditText tipPercentageEditText;
+    Button tipAndTotalButton;
     TextView tipTotalTextView;
     TextView totalBillTextView;
 
@@ -22,33 +21,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         billNoTipTotalEditText = (EditText)findViewById(R.id.BillNoTipEditText);
-        tenPercentButton = (Button)findViewById(R.id.TenPercentTipButton);
-        fifteenPercentButton = (Button)findViewById(R.id.FifteenPercentTipButton);
-        twentyPercentButton = (Button)findViewById(R.id.TwentyPercentTipButton);
+        tipPercentageEditText = (EditText)findViewById(R.id.TipPercentageEditText);
+        tipAndTotalButton = (Button)findViewById(R.id.CalculateTipAndTotalButton);
         tipTotalTextView = (TextView)findViewById(R.id.TipTotalTextView);
         totalBillTextView = (TextView)findViewById(R.id.TotalBillTextView);
 
-        tenPercentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+        tipAndTotalButton.setOnClickListener(new View.OnClickListener() {
+           @Override
             public void onClick(View v) {
-                calcAndDisplayTheTip(0.10);
-            }
+               String tipStr = tipPercentageEditText.getText().toString();
+               double tipPct = Double.valueOf(tipStr) / 100;
+               calcAndDisplayTheTip(tipPct);
+           }
         });
 
-        fifteenPercentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calcAndDisplayTheTip(0.15);
-            }
-        });
-
-        twentyPercentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calcAndDisplayTheTip(0.20);
-            }
-        });
     }
+
     void calcAndDisplayTheTip(Double tipPercentage) {
         // Get the bill total with no tip
         Double billNoTip;
